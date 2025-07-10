@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>思维导图展示</title>
+  <!-- 引入markmap-view库 -->
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.12.2/dist/view.min.js"></script>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+    }
+    #mindmap {
+      width: 100%;
+      height: 100vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <svg id="mindmap"></svg>
+
+  <script>
+    // 读取URL参数
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // 获取编码后的markdown文本
+    const markdown = decodeURIComponent(getQueryParam('text') || '# 无内容');
+
+    // 生成markmap
+    const svg = document.getElementById('mindmap');
+    const { Markmap } = window.markmap;
+    Markmap.create(svg, null, markdown);
+  </script>
+</body>
+</html>
