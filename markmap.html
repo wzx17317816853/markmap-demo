@@ -29,8 +29,7 @@
 
     const svg = document.getElementById('svg');
 
-    if (window.markmap && window.markmap.Markmap) {
-      const { Markmap } = window.markmap;
+    if (window.Markmap) {
       Markmap.create(svg, null, mdText);
     } else {
       console.error('Markmap未加载');
